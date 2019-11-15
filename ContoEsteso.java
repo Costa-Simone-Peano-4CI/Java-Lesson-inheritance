@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package testcontobancario;
 
 /**
  *
@@ -11,12 +11,8 @@ package main;
  */
 public class ContoEsteso extends ContoBancario {
 
-    public ContoEsteso(String NContoCorrente, int bilancio) {
-        super(NContoCorrente, bilancio);
+    public ContoEsteso(String nContoCorrente, int bilancio) {
+        super(nContoCorrente, bilancio);
     }
 
- 
-    
-   
-    
 }
