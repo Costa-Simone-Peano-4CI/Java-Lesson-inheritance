@@ -5,11 +5,9 @@
  */
 package testcontobancario;
 
-import javax.swing.JOptionPane;
-
 /**
  *
- * @author costa.simone
+ * @author quattrone.sebastiano
  */
 public class TestContoBancario {
 
@@ -17,20 +15,11 @@ public class TestContoBancario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // TODO code application logic here
 
-        
-        ContoBancario cc = new ContoBancario("ff", 3000);
+        ContoBancario cb = new ContoBancario("it0034000068", 2000);
+        System.out.println(cb.toString());
 
-        JOptionPane.showMessageDialog(null, "Benvenuto nel tuo contocorrente");
-      
-         Object[] possibleValues = {"Preleva", "Versa", "Controlla "};
-        Object sel_input = JOptionPane.showInputDialog(null, "Scegli", "Lettura", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]);
-       
-     if(sel_input == "Preleva"){
-                int ammontare_prelievo =  Integer.parseInt(JOptionPane.showInputDialog("Quanto vuoi prelevare?"));
-                cc.setBilancio(ammontare_prelievo);
-    JOptionPane.showMessageDialog(null,"Hai prelevato"+ammontare_prelievo+"€");
-     }
-   
     }
-        }      
+
+}
