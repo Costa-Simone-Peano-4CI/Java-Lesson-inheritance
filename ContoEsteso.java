@@ -5,28 +5,25 @@
  */
 package testcontobancario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author quattrone.sebastiano
+ * @author costa.simone
  */
 public class ContoEsteso extends ContoBancario {
 
     private int fido;
+    private int bilf = bilancio + fido;
 
-    public ContoEsteso(int fido, String conto) {
-        super(conto);
-        this.fido = 1000;
+    public ContoEsteso(String nContoCorrente, int bilancio,int fido) {
+        super(nContoCorrente, bilancio);
+       
     }
 
-    public ContoEsteso(String conto, int bilancio) {
-        super(conto, bilancio);
-        this.fido = 1000;
-    }
-
-    public ContoEsteso(String conto, int bilancio, int fido) {
-        super(conto, bilancio);
+    public ContoEsteso(int fido, String nContoCorrente, int bilancio) {
+        super(nContoCorrente, bilancio);
         this.fido = fido;
-
     }
 
     public int getFido() {
@@ -38,20 +35,26 @@ public class ContoEsteso extends ContoBancario {
     }
 
     @Override
-    protected void preleva(int bilancio) {
-        double pr=0;
-         if (bilancio == 0) {
-            System.out.println("il valore del conto e' " + bilancio + "\n quindi non puo' essere prelevato alcuna somma");
-        } else {
-            System.out.println("digitare valore da prelevare");
-            if(bilancio+fido>pr){
-                int c= bilancio+fido;
-                c=(int) (c-pr);
-             bilancio=c;   
-            }else{
-                System.out.println("il valore del conto e' " + bilancio + "\n richiedere prelevo piu' basso");
+    public int Preleva() {
+        ammontare_prelievo = Integer.parseInt(JOptionPane.showInputDialog("Quanto vuoi prelevare?"));
+        if (ammontare_prelievo > bilancio) {
+            JOptionPane.showConfirmDialog(null, "Non puoi prelevare questa somma perchè non hai abbastanza soldi,dobbiamo prelevare anche dal fido");
+            if (fido == 0) {
+                JOptionPane.showMessageDialog(null, "Il tuo fido si è esaurito");
+            } else {
+                bilf -= ammontare_prelievo;
+                fido -= ammontare_prelievo;
             }
-        } //To change body of generated methods, choose Tools | Templates.
+            JOptionPane.showMessageDialog(null, "Hai prelevato" + ammontare_prelievo + "€");
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Hai prelevato" + ammontare_prelievo + "€");
+            bilancio -= ammontare_prelievo;
+        }
+
+        return bilancio;
     }
+
+   
 
 }

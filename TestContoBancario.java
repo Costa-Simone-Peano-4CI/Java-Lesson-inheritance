@@ -5,9 +5,11 @@
  */
 package testcontobancario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author quattrone.sebastiano
+ * @author costa.simone
  */
 public class TestContoBancario {
 
@@ -15,11 +17,28 @@ public class TestContoBancario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
 
-        ContoBancario cb = new ContoBancario("it0034000068", 2000);
-        System.out.println(cb.toString());
+        
+        ContoEsteso c1 = new ContoEsteso("ff", 3000,1000);
 
-    }
-
-}
+        JOptionPane.showMessageDialog(null, "Benvenuto nel tuo contocorrente");
+        Object sel_input = "";
+      do{
+         Object[] possibleValues = {"Preleva", "Versa", "Controlla","Esci"};
+         sel_input = JOptionPane.showInputDialog(null, "Scegli", "Lettura", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]);
+       
+     if(sel_input == "Preleva"){
+              JOptionPane.showMessageDialog(null," " + c1.Preleva());
+              
+     }
+   if(sel_input == "Versa"){
+   JOptionPane.showMessageDialog(null,c1.Versa()+"\n");
+   }
+   if(sel_input == "Controlla"){
+   JOptionPane.showMessageDialog(null,"Nome conto: " + c1.getnContoCorrente() +"\n "+ c1.getBilancio());
+   }
+       
+    }while( sel_input != "Esci");
+        }    
+    
+}  

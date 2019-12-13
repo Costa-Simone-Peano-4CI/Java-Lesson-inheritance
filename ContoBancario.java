@@ -9,50 +9,61 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author quattrone.sebastiano
+ * @author costa.simone
  */
 public class ContoBancario {
 
-    private String conto;
-    private int bilancio;
+    private String NContoCorrente;
+    protected int bilancio = 0;
+    int ammontare_prelievo = 0;
+    private int ammontare_versamento = 0;
 
-    public ContoBancario(String conto, int bilancio) {//constructor con 2 parametri 
-        this.conto = conto;
+    public ContoBancario(String nContoCorrente, int bilancio) {
+        this.NContoCorrente = nContoCorrente;
         this.bilancio = bilancio;
     }
 
-    public ContoBancario(String conto) {//constructor con 1 parametro
-        this.conto = conto;
-        this.bilancio = 0;
-    }
-
-    public String getConto() {
-        return conto;
-    }
-
-    public void setConto(String conto) {
-        this.conto = conto;
+    public String getnContoCorrente() {
+        return NContoCorrente;
     }
 
     public int getBilancio() {
         return bilancio;
     }
 
+    public void setNContoCorrente(String NContoCorrente) {
+        this.NContoCorrente = NContoCorrente;
+    }
+
     public void setBilancio(int bilancio) {
         this.bilancio = bilancio;
     }
 
-    protected void preleva(int bilancio) {
-        if (bilancio == 0) {
-            System.out.println("il valore del conto e' " + bilancio + "\n quindi non puo' essere prelevato alcuna somma");
+   
+
+    
+
+    public int Preleva() {
+        ammontare_prelievo = Integer.parseInt(JOptionPane.showInputDialog("Quanto vuoi prelevare?"));
+        if (ammontare_prelievo > bilancio) {
+            JOptionPane.showMessageDialog(null, "Non puoi prelevare");
         } else {
-            System.out.println("digitare valore da prelevare");
+
+            JOptionPane.showMessageDialog(null, "Hai prelevato" + ammontare_prelievo + "€");
+            bilancio -= ammontare_prelievo;
         }
+
+        return bilancio;
     }
 
-    @Override
-    public String toString() {
-        return "il conto e' " + conto + " il suo bilancio e' " + bilancio;
-    }
+    public int Versa() {
+        ammontare_versamento = Integer.parseInt(JOptionPane.showInputDialog("Quanto vuoi versare?"));
+
+        JOptionPane.showMessageDialog(null, "Hai versato " + ammontare_versamento + " €");
+        bilancio += ammontare_versamento;
+    
+ JOptionPane.showMessageDialog(null,"Bilancio: \n" );
+    return bilancio;
+}
 
 }
